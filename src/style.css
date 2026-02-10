@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #3b82f6;
+  --radius-xl: 1rem;
+}
+
+@layer base {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
