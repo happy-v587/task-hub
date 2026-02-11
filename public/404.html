@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting... - TaskHub</title>
+  <script>
+    // 重定向脚本：将非哈希路径转换为哈希路由
+    (function() {
+      // 获取当前路径，移除 GitHub Pages 仓库前缀
+      const repoName = 'task-hub';
+      let path = window.location.pathname;
+
+      // 移除仓库名前缀（如果存在）
+      if (path.startsWith(`/${repoName}/`)) {
+        path = path.substring(repoName.length + 1); // 保留开头的 /
+      } else if (path === `/${repoName}`) {
+        path = '/';
+      }
+
+      // 移除开头的斜杠（如果存在），因为哈希路由不需要它
+      if (path.startsWith('/')) {
+        path = path.substring(1);
+      }
+
+      // 构建新的哈希 URL
+      const hashPath = path ? `/#/${path}` : '/#/';
+      const newUrl = `/${repoName}${hashPath}${window.location.search}${window.location.hash}`;
+
+      // 执行重定向
+      window.location.replace(newUrl);
+    })();
+  </script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    p {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📡 重定向中...</h1>
+    <p>正在将您重定向到正确的页面。</p>
+    <p>如果几秒后没有自动跳转，请<a href="/task-hub/#/" style="color: #ffd700;">点击这里</a>。</p>
+  </div>
+</body>
+</html>
